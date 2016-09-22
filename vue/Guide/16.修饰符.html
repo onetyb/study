@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue修饰符</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 只当事件是从侦听器绑定的元素本身触发时才触发回调。 -->
+        <div @click.self="parent">
+            父亲
+
+            <div>some</div>
+            <!-- 调用 event.stopPropagation() 阻止事件冒泡-->
+            <div @click.stop="child">
+                儿子
+            </div>
+        </div>
+        <!-- event.preventDefault() 取消事件的默认动作-->
+        <a @click.prevent href="http://www.baidu.com" >百度</a>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                parent:function(){
+                    alert('parent')
+                },
+                child:function(){
+                    alert('child')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

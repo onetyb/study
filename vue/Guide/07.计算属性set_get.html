@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{name}} <br>
+		{{b}} <br>
+		{{age}}
+	</div>
+	<script>
+		var vm = new Vue({
+			data:{
+				name:'hello',
+				age:'age'
+			},
+			computed:{
+				b:{
+					//当b设置属性是会立即调用set方法
+					set:function(val){
+						//可以改变原数据的属性
+						this.name=val;
+						this.age=50;
+					},
+					get:function(){
+						return this.name + ' world'
+					}
+				}
+			}
+		});
+		vm.$mount('#app')
+		//调用b 设置值
+		setTimeout(function(){
+			vm.b = 'computed_set';
+		}, 2000)
+	</script>
+</body>
+</html>

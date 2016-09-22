@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实例</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{mess.name}}
+        <!-- mess.age不存在的话 显示100 -->
+        {{mess.age || 200}}  
+    </div>
+ 
+    <script>
+        var message = {name:1}
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                mess:message
+            }
+        });
+
+        //实例上的数据与绑定的对象指向同一内存空间；
+        message.name=100;//直接操作同一空间值
+        console.log(vm.mess === message)
+
+        message.age=1 //不更新实体；
+        //实例创建后原本不存在的属性，添加上不会生效
+        //有两个方法Vue.set   vm.$set
+        //vue要求 不要莫名其妙的加一些不存在的属性
+        vm.$set('age',2)
+
+        message = {name:2}//message指向变了，但是message的指向还是以前
+
+        
+    </script>
+</body>
+</html>

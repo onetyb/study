@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue条件语句</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- v-show指令使用在dom中，v-show 是简单的切换元素的 CSS 属性 display。 -->
+    <!-- v-show不支持<template> -->
+    <div v-show="name">hello world</div>
+    <!-- <template>可以添加v-if -->
+    <template v-if="name">
+        <div>123</div>
+        <div>321</div>
+        <div>456</div>
+    </template>
+    
+    <!--else紧跟show 和 if 不要跨逻辑-->
+    <div v-else>world dir</div>
+</div>  
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            name:true
+        }
+    })
+</script>
+    
+</body>
+</html>
