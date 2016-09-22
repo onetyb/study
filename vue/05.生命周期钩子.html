@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期钩子</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{name}}
+</div>
+    <script>
+        //选项/生命周期  
+        // init:实例开始初始化同步调用
+        // created:实例创建后同步调用； dom变异还没有开始编译 $el还不存在
+        // beforeCompile:在编译开始前调用；
+        // compiled:编译结束后调用
+        // ready:编译结束与$el第一次插入文档之后调用；在attached之后调用
+        // attached:$el插入dom时调用
+        // detached:$el从DOM删除时调用
+        // beforeDestory:在开始销毁实例时调用。此时实例仍然有功能；
+        // destoryed:在实例被销毁之后调用
+        var vm = new Vue({
+            data:{
+                name:'hello'
+            }
+            created:function(){
+                alert('实例已经创建')  
+            },
+            beforeCompile:function(){
+                alert('编译前')
+            },
+            compiled:function(){
+                alert('编译后')
+            },
+            ready:function(){
+                alert('插入到文档')
+            },
+            beforeDestory:function(){
+                alert('销毁之前')
+            },
+            destoryed:function(){
+                alert('销毁完成')
+            }
+        })
+        //实例方法/生命周期
+        //vue实例没有el 选项，可以使用$mount手动挂载指定元素
+        vm.$mount('#app');
+    </script>
+</body>
+</html>

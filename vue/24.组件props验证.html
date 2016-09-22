@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="data">
+
+        <parent :me="message" :me2.sync="data"></parent>
+
+
+
+
+        <template id="tmpl">
+            {{me}} <input type="text" v-model="me2">
+        </template>
+    </div>
+
+    <script>
+        Vue.component('parent',{
+            template:'#tmpl',
+            props:{
+                'me':{
+                    type:[String],
+                    default:function(){
+                        return 200;
+                    },
+                    // 验证
+                    validator:function(v){
+                        return v == 'vue_validator'
+                    },
+                    // 自定义
+                    //传进来的值 强制进行改变 在验证之前
+                    coerce:function(v){
+                        return v+'validator'//之后开始检测type是否符合
+                    }
+                },
+                'me2':{
+                    twoWay:true
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'vue_',
+                data:'world'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" value="点击1" v-model="name" name="all">
+        <input type="checkbox" value="点击2" v-model="name" name="all">
+        <input type="checkbox" value="点击3" v-model="name" name="all">
+        {{name}}
+
+        <br>
+
+        <input type="radio" value="man" v-model="radio" name="group">男
+        <input type="radio" value="woman" v-model="radio" name="group">女
+        {{radio}}
+
+
+        <br>
+
+        <select name="" id="" v-model="selects">
+             <option v-for="item in lists" :value="item.name">{{item.name}}</option>
+        </select>
+
+
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                name:[],
+                selects:'jw1',
+                lists:[
+                    {name:'jw1'},
+                    {name:'jw2'},
+                    {name:'jw3'},
+                    {name:'jw4'}
+                ]
+             }
+        })
+    </script>
+</body>
+</html>

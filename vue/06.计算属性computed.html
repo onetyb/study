@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性 computed</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{name}} <br>
+		{{b}}
+	</div>
+	<script>
+		var vm = new Vue({
+			data:{
+				name:'hello'
+			},
+			//vue将绑定表达式限制为一个表达式，如果需要多余一个表达式逻辑，应使用计算属性 computed
+			//vm.b以来与vm.name;因为vm.name发生改变，依赖于vm.b的绑定也会更新
+			computed:{
+				//默认是获取属性getter
+				b:function(){
+					//this是当前vue的实例
+					return this.name + ' world'
+				}
+				//有缓存
+				//如不需要缓存 cache:false,
+			}
+		});
+		vm.$mount('#app')
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        第一个{{message}}
+    </div>
+    <script>
+        var message={
+            message:'hello world'
+        };
+        var vm = new Vue({
+            el:'#app',
+            data:message
+        });
+        // Vue 实例暴露了一些有用的实例属性与方法,属性与方法都有前缀 $，以便与代理的数据属性区分
+        console.log(vm.$el === document.getElementById('app'))
+        console.log(vm.$data === message);
+
+        //已经绑定的后的元素是不能改的
+        message = {
+            message:'hello world1111'
+        }
+        //改变数据底层内容
+        vm.$data={
+            message:'new hello world'
+        }
+
+    </script>
+</body>
+</html>

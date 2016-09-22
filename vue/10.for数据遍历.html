@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-for基于一个数组渲染一个列表 -->
+        <!-- 有一个特殊变量$index  数组元素的索引-->
+        <div v-for="book in books">
+            {{$index}}  {{book.name}}  {{book.price}}
+        </div>
+        
+        <!-- 也可以为索引制定一个别名  -->
+        <div v-for="(index,book) in books">
+            {{index}}  {{book.name}}  {{book.price}}
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {name:'javascript',price:50},
+                    {name:'nodejs',price:150},
+                    {name:'vue',price:20},
+                    {name:'ajax',price:250},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
